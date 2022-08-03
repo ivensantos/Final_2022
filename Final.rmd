@@ -1,6 +1,6 @@
 ---
 title: "Covid91 vaccine study Final2022"
-author: "Put your name here!"
+author: "Iven Santos"
 output: 
   html_document:
     number_sections: true
@@ -18,21 +18,169 @@ FinalDat <-read.csv(file="final_Data.csv",header=TRUE)
 FinalData <- FinalDat  %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+Males = filter(FinalData, sex == "M")
+Females = filter(FinalData, sex == "F")
+LGBTQ = filter(FinalData, LGBTQ == "gay")
+DrugUser = filter(FinalData, DrugUser == "yes")
 ```
-
 # Introduction
 
-A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
+A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub-populations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
+
+## Null Hypothesis
+
+$H_0$: 
+
+$H_A$: 
 
 ## Males
+
+### Graphical Descriptive Results
+
+```{r}
+barchartGC(~infected + treatment, data = Males)
+barchartGC(~infected + treatment, data = Males, type = "percent")
+```
+
+### Numerical Descriptive Results
+```{r}
+table1 <- xtabs(~infected + treatment, data = Males)
+rowPerc(table1)
+colPerc(table1)
+```
+
+
+### Inferential Descriptive Results 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+
+### Male Efficacy
+
+```{r}
+efficMales = 2.09/(2.09 + 1)*100
+efficMales = round(efficMales)
+confIntLower = 1.67/(1.67+1) * 100 
+confIntLower = round(confIntLower)
+confIntUpper = 2.64/(2.64 + 1 ) * 100 
+confIntUpper = round(confIntUpper)
+```
 
 
 ## Females
 
+### Graphical Descriptive Results
+
+```{r}
+barchartGC(~infected + treatment, data = Females)
+barchartGC(~infected + treatment, data = Females, type = "percent")
+```
+
+
+### Numerical Descriptive Results
+```{r}
+table2 <- xtabs(~infected + treatment, data = Females)
+rowPerc(table2)
+colPerc(table2)
+```
+
+
+### Inferential Descriptive Results 
+```{r}
+chisq.test(table2)
+chisqtestGC(table2)
+fisher.test(table2)
+```
+
+
+### Female  Efficacy 
+
+```{r}
+efficFemales = 1.43/(1.43 + 1)*100
+efficFemales = round(efficFemales)
+confIntLower = 1.15/(1.15 + 1) * 100 
+confIntLower = round(confIntLower)
+confIntUpper = 1.78/(1.78 + 1 ) * 100 
+confIntUpper = round(confIntUpper)
+```
+
 
 ## LGBTQ
 
+### Graphical Descriptive Results 
+
+```{r}
+barchartGC(~infected + treatment, data = LGBTQ)
+barchartGC(~infected + treatment, data = LGBTQ, type = "percent")
+```
+
+### Numerical Descriptive Results
+
+```{r}
+table3 <- xtabs(~infected + treatment, data = LGBTQ)
+rowPerc(table3)
+colPerc(table3)
+```
+
+### Inferential Descriptive Results
+```{r}
+chisq.test(table3)
+chisqtestGC(table3)
+fisher.test(table3)
+```
 
 
-## Druggies
+### LGBTQ Efficacy 
 
+```{r}
+efficLGBTQ = .15/(.15 + 1)*100
+efficLGBTQ = round(efficLGBTQ)
+confIntLower = .06/(.06 + 1) * 100 
+confIntLower = round(confIntLower)
+confIntUpper = .31/(.31 + 1 ) * 100 
+confIntUpper = round(confIntUpper)
+```
+
+## Drug Users
+
+### Graphical Descriptive Results
+
+```{r}
+barchartGC(~infected + treatment, data = DrugUser)
+barchartGC(~infected + treatment, data = DrugUser, type= "percent")
+```
+
+
+### Numerical Descriptive Results 
+```{r}
+table4 <- xtabs(~infected + treatment, data = DrugUser)
+rowPerc(table4)
+colPerc(table4)
+```
+
+
+### Inferential Descriptive Results 
+```{r}
+chisq.test(table4)
+chisqtestGC(table4)
+fisher.test(table4)
+```
+
+
+### Drug User Efficacy 
+
+```{r}
+efficDrugUsers = .18/(.18 + 1)*100
+efficDrugUsers = round(efficDrugUsers)
+confIntLower = .08/(.08 + 1) * 100 
+confIntLower = round(confIntLower)
+confIntUpper = .37/(.37 + 1 ) * 100 
+confIntUpper = round(confIntUpper)
+```
+
+
+
+## Conclusion
