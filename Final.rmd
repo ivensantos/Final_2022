@@ -29,9 +29,9 @@ A new  preventative vaccine (covid91) is under test in clinical trials. Given th
 
 ## Null Hypothesis
 
-$H_0$: 
+$H_0$: There's no shown difference between the vaccine and the group it gets used on. Both values are independent.
 
-$H_A$: 
+$H_A$: There is a shown difference between the vaccine and the group it gets used on. Both values are dependent.
 
 ## Males
 
@@ -42,6 +42,8 @@ barchartGC(~infected + treatment, data = Males)
 barchartGC(~infected + treatment, data = Males, type = "percent")
 ```
 
+This chart shows that the males who were given the vaccine are less likely to get covid19 compared to those who didn't get it.
+
 ### Numerical Descriptive Results
 ```{r}
 table1 <- xtabs(~infected + treatment, data = Males)
@@ -49,6 +51,7 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+Those who are vaccinated are least likely to get sick. As the majority of those who are infected are the ones who were given the placebo. Proving that the vaccine is effective at keeping males from getting infected.
 
 ### Inferential Descriptive Results 
 ```{r}
@@ -56,6 +59,7 @@ chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+This table continues to confirms that the vaccine is good at keeping people healthy as there is a 128 person difference in the infections.
 
 
 ### Male Efficacy
@@ -69,6 +73,7 @@ confIntUpper = 2.64/(2.64 + 1 ) * 100
 confIntUpper = round(confIntUpper)
 ```
 
+The vaccine is shown multiple times to be effective on males. 
 
 ## Females
 
