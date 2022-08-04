@@ -84,6 +84,7 @@ barchartGC(~infected + treatment, data = Females)
 barchartGC(~infected + treatment, data = Females, type = "percent")
 ```
 
+As with the chart for males, this also appears to show that women who have the covid19 vaccine are also less susceptible to contracting it.
 
 ### Numerical Descriptive Results
 ```{r}
@@ -91,7 +92,7 @@ table2 <- xtabs(~infected + treatment, data = Females)
 rowPerc(table2)
 colPerc(table2)
 ```
-
+The table further shows that giving women the vaccine makes them less likely to get sick from covid19 and are more vulnerable when taking the placebo.
 
 ### Inferential Descriptive Results 
 ```{r}
@@ -100,6 +101,7 @@ chisqtestGC(table2)
 fisher.test(table2)
 ```
 
+We reject the null hypothesis on all three tables as they show that there is benefit for women to have the vaccine.
 
 ### Female  Efficacy 
 
@@ -112,6 +114,7 @@ confIntUpper = 1.78/(1.78 + 1 ) * 100
 confIntUpper = round(confIntUpper)
 ```
 
+The vaccine is shown three times here that it is effective.
 
 ## LGBTQ
 
