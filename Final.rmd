@@ -125,6 +125,8 @@ barchartGC(~infected + treatment, data = LGBTQ)
 barchartGC(~infected + treatment, data = LGBTQ, type = "percent")
 ```
 
+The chart here shows that the vaccine actually makes the LGBTQ more likely to catch covid19 than if they were with out it.
+
 ### Numerical Descriptive Results
 
 ```{r}
@@ -133,13 +135,15 @@ rowPerc(table3)
 colPerc(table3)
 ```
 
+This table further proves the first chart as about 86.% of people sick are ones who have taken the covid19 vaccine.
+
 ### Inferential Descriptive Results
 ```{r}
 chisq.test(table3)
 chisqtestGC(table3)
 fisher.test(table3)
 ```
-
+All three of these tables show that getting the vaccine as a person of LGTBQ has more risks than it does benefits. Which in turn disproves the null hypothesis.
 
 ### LGBTQ Efficacy 
 
@@ -152,6 +156,8 @@ confIntUpper = .31/(.31 + 1 ) * 100
 confIntUpper = round(confIntUpper)
 ```
 
+Having the vaccine has negative effects for those of LGBTQ
+
 ## Drug Users
 
 ### Graphical Descriptive Results
@@ -161,6 +167,7 @@ barchartGC(~infected + treatment, data = DrugUser)
 barchartGC(~infected + treatment, data = DrugUser, type= "percent")
 ```
 
+Drug users who take the vaccine become noticeably more vulnerable to getting infected when they have the vaccine.
 
 ### Numerical Descriptive Results 
 ```{r}
@@ -168,7 +175,7 @@ table4 <- xtabs(~infected + treatment, data = DrugUser)
 rowPerc(table4)
 colPerc(table4)
 ```
-
+85% of the drug users who are infected are the ones who are vaccinated. Showing even further that the vaccine is doing them more harm.
 
 ### Inferential Descriptive Results 
 ```{r}
@@ -177,6 +184,7 @@ chisqtestGC(table4)
 fisher.test(table4)
 ```
 
+The tables shows that by having the vaccine that the drug users put themselves more at risk for getting sick. So the null hypothesis has to be rejected.
 
 ### Drug User Efficacy 
 
@@ -189,5 +197,8 @@ confIntUpper = .37/(.37 + 1 ) * 100
 confIntUpper = round(confIntUpper)
 ```
 
+Taking the vaccine makes drug users liklier to get infected with covid19.
 
 ## Conclusion
+
+The original question was if the vaccine has the same effect on every user or if there is a difference. And the answer is, there's a difference. While for Males and Females it proved that taking the vaccine was beneficial for them in protecting against covid19. Other charts showed the exact opposite for LGBTQ members and Drug Users, who were shown multiple times to actually have negative results when taking the vaccine, that they were more likely to get sick from it.
